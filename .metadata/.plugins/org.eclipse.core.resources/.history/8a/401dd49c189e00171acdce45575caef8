@@ -1,0 +1,14 @@
+package ee.ttu.forecast.test;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class WeatherApiTest {
+
+	@Test
+	public void test() {
+		fail("Not yet implemented");
+	}
+
+}
