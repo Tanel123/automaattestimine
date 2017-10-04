@@ -12,39 +12,5 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="con" path="org.eclipse.buildship.core.gradleclasspathcontainer"/>
-	<classpathentry kind="lib" path="C:/Users/Tanel/.m2/repository/org/apache/httpcomponents/httpclient/4.2.3/httpclient-4.2.3.jar">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-			<attribute name="maven.groupId" value="org.apache.httpcomponents"/>
-			<attribute name="maven.artifactId" value="httpclient"/>
-			<attribute name="maven.version" value="4.2.3"/>
-			<attribute name="maven.scope" value="provided"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Tanel/.m2/repository/com/google/code/gson/gson/2.8.2/gson-2.8.2.jar">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-			<attribute name="maven.groupId" value="com.google.code.gson"/>
-			<attribute name="maven.artifactId" value="gson"/>
-			<attribute name="maven.version" value="2.8.2"/>
-			<attribute name="maven.scope" value="compile"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Tanel/Documents/Ylikool/Viies semester/Automaattestimine/jarid/httpcomponents-client-4.5.3-bin/httpcomponents-client-4.5.3/lib/commons-codec-1.9.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Tanel/Documents/Ylikool/Viies semester/Automaattestimine/jarid/httpcomponents-client-4.5.3-bin/httpcomponents-client-4.5.3/lib/commons-logging-1.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Tanel/Documents/Ylikool/Viies semester/Automaattestimine/jarid/httpcomponents-client-4.5.3-bin/httpcomponents-client-4.5.3/lib/fluent-hc-4.5.3.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Tanel/Documents/Ylikool/Viies semester/Automaattestimine/jarid/httpcomponents-client-4.5.3-bin/httpcomponents-client-4.5.3/lib/httpclient-4.5.3.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Tanel/Documents/Ylikool/Viies semester/Automaattestimine/jarid/httpcomponents-client-4.5.3-bin/httpcomponents-client-4.5.3/lib/httpclient-cache-4.5.3.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Tanel/Documents/Ylikool/Viies semester/Automaattestimine/jarid/httpcomponents-client-4.5.3-bin/httpcomponents-client-4.5.3/lib/httpclient-win-4.5.3.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Tanel/Documents/Ylikool/Viies semester/Automaattestimine/jarid/httpcomponents-client-4.5.3-bin/httpcomponents-client-4.5.3/lib/httpcore-4.4.6.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Tanel/Documents/Ylikool/Viies semester/Automaattestimine/jarid/httpcomponents-client-4.5.3-bin/httpcomponents-client-4.5.3/lib/httpmime-4.5.3.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Tanel/Documents/Ylikool/Viies semester/Automaattestimine/jarid/httpcomponents-client-4.5.3-bin/httpcomponents-client-4.5.3/lib/jna-4.1.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Tanel/Documents/Ylikool/Viies semester/Automaattestimine/jarid/httpcomponents-client-4.5.3-bin/httpcomponents-client-4.5.3/lib/jna-platform-4.1.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Tanel/Documents/Ylikool/Viies semester/Automaattestimine/jarid/commons-lang3-3.6/commons-lang3-3.6.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Tanel/Documents/Ylikool/Viies semester/Automaattestimine/jarid/commons-lang3-3.6/commons-lang3-3.6-javadoc.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Tanel/Documents/Ylikool/Viies semester/Automaattestimine/jarid/commons-lang3-3.6/commons-lang3-3.6-sources.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Tanel/Documents/Ylikool/Viies semester/Automaattestimine/jarid/commons-lang3-3.6/commons-lang3-3.6-tests.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Tanel/Documents/Ylikool/Viies semester/Automaattestimine/jarid/commons-lang3-3.6/commons-lang3-3.6-test-sources.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Tanel/Documents/Ylikool/Viies semester/Automaattestimine/jarid/java-json.jar/java-json.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
