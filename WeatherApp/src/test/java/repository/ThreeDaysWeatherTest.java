@@ -2,11 +2,16 @@ package repository;
 
 import static org.junit.Assert.*;
 
+import java.io.IOException;
+
+import org.apache.http.ParseException;
+import org.apache.http.client.ClientProtocolException;
+import org.json.JSONException;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import model.ThreeDaysWeather;
+import model.OneDayMaxMinTemp;
 import model.ThreeDaysWeatherReport;
 import model.WeatherRequest;
 
@@ -47,21 +52,21 @@ public class ThreeDaysWeatherTest {
 	
 	@Test
 	public void testIfWeatherForThreeDaysIsReturned(){
-		assertEquals(3, report.threeDaysWeather.length);
+		assertEquals(3, report.threeDaysWeatherList.length);
 	}
 	
 	@Test
 	public void TestIfHigestTemperatureIsHigherThanLowestForEachDay(){
-		ThreeDaysWeather[] tdw = report.threeDaysWeather;
-		for(ThreeDaysWeather t:tdw){
+		OneDayMaxMinTemp[] tdw = report.threeDaysWeatherList;
+		for(OneDayMaxMinTemp t:tdw){
 			assertTrue(t.maxTemperature > t.minTemperature);
 		}	
 	}
 	
 	@Test
 	public void TestHigestTemperatures(){
-		ThreeDaysWeather[] tdw = report.threeDaysWeather;
-		for(ThreeDaysWeather t:tdw){
+		OneDayMaxMinTemp[] tdw = report.threeDaysWeatherList;
+		for(OneDayMaxMinTemp t:tdw){
 			assertTrue(t.maxTemperature < 70);
 			assertTrue(t.maxTemperature > -100);
 		}
@@ -69,8 +74,8 @@ public class ThreeDaysWeatherTest {
 	
 	@Test
 	public void TestLowestTemperatures(){
-		ThreeDaysWeather[] tdw = report.threeDaysWeather;
-		for(ThreeDaysWeather t:tdw){
+		OneDayMaxMinTemp[] tdw = report.threeDaysWeatherList;
+		for(OneDayMaxMinTemp t:tdw){
 			assertTrue(t.minTemperature < 70);
 			assertTrue(t.minTemperature > -100);
 		}
