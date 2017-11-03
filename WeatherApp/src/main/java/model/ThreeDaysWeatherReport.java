@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ThreeDaysWeatherReport{
 	public final String cityName;
@@ -13,6 +14,11 @@ public class ThreeDaysWeatherReport{
 		this.coordinates = coordinates;
 		this.threeDaysWeatherList = threeDaysWeatherList;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "ThreeDaysWeatherReport [cityName=" + cityName + ", coordinates=" + coordinates
+				+ ", threeDaysWeatherList=" + Arrays.toString(threeDaysWeatherList) + "]";
+	}
 	
 }

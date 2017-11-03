@@ -9,6 +9,10 @@ public class OneDayMaxMinTemp {
 		this.maxTemperature = maxTemperature;
 		this.minTemperature = minTemperature;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "OneDayMaxMinTemp [maxTemperature=" + maxTemperature + ", minTemperature=" + minTemperature + "]";
+	}
 	
 }

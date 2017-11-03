@@ -1,0 +1,17 @@
+package utility;
+
+import java.util.Scanner;
+
+public class CityNameScanner {
+	
+	private static Scanner scanner;
+
+	//ei ole veel korras
+	public static String cityNameScanner(){
+		System.out.println("Enter city name: ");
+		scanner = new Scanner(System.in);
+		String cityname = scanner.nextLine();
+		return cityname;
+		//System.out.println("Your username is " + username);
+	}
+}

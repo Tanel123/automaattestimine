@@ -1,0 +1,29 @@
+package utility;
+
+import java.io.BufferedWriter;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
+
+import model.CurrentWeatherReport;
+
+public class OutputWriter {
+	
+	public static void writeToFile(CurrentWeatherReport input){	
+		Writer writer = null;
+
+		try {
+		    writer = new BufferedWriter(new OutputStreamWriter(
+		          new FileOutputStream("C:/Users/Tanel/Documents/GitHub/automaattestimine/output.txt"), "utf-8"));
+		    //String cityName = input.cityName;
+		    //String coordinates = input.coordinates.toString();
+		    //String currentTemperature = input.currentTemperature
+		    writer.write(input.toString());
+		} catch (IOException ex) {
+		  // report
+		} finally {
+		   try {writer.close();} catch (Exception ex) {/*ignore*/}
+		}
+	}
+}

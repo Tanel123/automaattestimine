@@ -14,6 +14,8 @@ import org.junit.Test;
 import model.OneDayMaxMinTemp;
 import model.ThreeDaysWeatherReport;
 import model.WeatherRequest;
+import utility.CityNameScanner;
+import utility.OutputWriter;
 
 public class ThreeDaysWeatherTest {
     private static ThreeDaysWeatherReport report;
@@ -22,9 +24,10 @@ public class ThreeDaysWeatherTest {
 	@Before
 	public void setUp() throws Exception {
 		try{
-			request = new WeatherRequest("Tallinn", "metric");
+			request = new WeatherRequest(CityNameScanner.getCityNameFromScanner(), "metric");
 			OpenWeatherRepository repository = new OpenWeatherRepository();
 			report = repository.getThreeDaysWeather(request);
+			OutputWriter.writeToFile(report);
 		}catch (Exception e){
 			fail("Cause of failure: " + e.getMessage());
 		}	
