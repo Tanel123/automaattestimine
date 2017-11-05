@@ -14,19 +14,14 @@ import utility.OutputWriter;
 public class CurrentWeatherTest {
     private static CurrentWeatherReport report;
     private static WeatherRequest request;
-    private static CityNameScanner scanner;
-    private static OutputWriter writer;
     
 	@Before
 	public void setUp() throws Exception {
 		try{
-			scanner = new CityNameScanner();
-			writer = new OutputWriter();
-			
-			request = new WeatherRequest(scanner.getCityNameFromScanner(), "metric");
+			request = new WeatherRequest(CityNameScanner.getCityNameFromScanner(), "metric");
 			OpenWeatherRepository repository = new OpenWeatherRepository();
-			report = repository.getCurrentWeather(request);		
-			writer.writeToFile(report);
+			report = repository.getCurrentWeather(request);
+			OutputWriter.writeToFile(report);
 		}catch (Exception e){
 			fail("Cause of failure: " + e.getMessage());
 		}	

@@ -5,10 +5,9 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class CityNameScanner {
-	private Scanner scanner;	
+	private static Scanner scanner;
 	
-	
-	public String getCityNameFromScanner() throws Exception{
+	public static String getCityNameFromScanner() throws Exception{
 		
 		try{			
 			System.out.println("To insert city name from console insert 'C', To read city name from input.txt file insert 'R': ");

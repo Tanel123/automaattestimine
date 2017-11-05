@@ -7,7 +7,12 @@ import java.util.Scanner;
 public class CityNameScanner {
 	private Scanner scanner;	
 	
-	
+	public CityNameScanner() {
+		super();
+	}
+
+
+
 	public String getCityNameFromScanner() throws Exception{
 		
 		try{			

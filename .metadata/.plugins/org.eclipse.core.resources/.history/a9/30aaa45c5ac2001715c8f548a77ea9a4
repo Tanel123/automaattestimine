@@ -11,7 +11,7 @@ import model.ThreeDaysWeatherReport;
 
 public class OutputWriter {
 	
-	public void writeToFile(Object report){	
+	public static void writeToFile(Object report){	
 	    if(report instanceof CurrentWeatherReport){  
 	        Writer writer = null;
 

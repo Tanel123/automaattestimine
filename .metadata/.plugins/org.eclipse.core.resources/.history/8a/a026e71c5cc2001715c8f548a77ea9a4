@@ -25,7 +25,8 @@ public class CurrentWeatherTest {
 			
 			request = new WeatherRequest(scanner.getCityNameFromScanner(), "metric");
 			OpenWeatherRepository repository = new OpenWeatherRepository();
-			report = repository.getCurrentWeather(request);		
+			report = repository.getCurrentWeather(request);
+			
 			writer.writeToFile(report);
 		}catch (Exception e){
 			fail("Cause of failure: " + e.getMessage());
