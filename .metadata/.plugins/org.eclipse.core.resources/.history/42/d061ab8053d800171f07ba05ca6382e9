@@ -1,0 +1,45 @@
+package repository;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
+import org.junit.Test;
+
+import dummyFactory.RequestDummy;
+import model.WeatherRequest;
+import utility.Constants;
+import utility.InputReader;
+
+public class InputReaderTaskTest {	
+	
+	@Test
+	public void testIfRequestFromInputIsSameAsRequestFromFactory(){
+		try{
+			InputReader inputReaderMock = mock(InputReader.class);
+			
+			/*WeatherRequest[] requestsListDummy = new WeatherRequest[3];
+			WeatherRequest requestDummy = new WeatherRequest("DummyCity", "metric");
+			requestsListDummy[0] = requestDummy;
+			requestsListDummy[1] = requestDummy;
+			requestsListDummy[2] = requestDummy;*/
+			RequestDummy requestDummy = new RequestDummy();
+			WeatherRequest[] requestsListDummy = requestDummy.createWeatherRequestDummy();
+			
+			when(inputReaderMock.makeRequestListFromFile(any(String.class))).thenReturn(requestsListDummy);
+			
+            WeatherRequest[] requestsList = inputReaderMock.makeRequestListFromFile(Constants.INPUT_FILE);
+            
+            for(WeatherRequest request:requestsList){
+            	System.out.println(request.toString());
+            	assertEquals(request, requestDummy);
+            }
+            
+	    }catch (Exception E){
+	        fail("Failure cause " + E.getMessage());
+	    }
+	        
+	}
+}

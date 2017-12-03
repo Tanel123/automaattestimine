@@ -1,0 +1,32 @@
+package utility;
+
+import model.CurrentWeatherReport;
+import model.ThreeDaysWeatherReport;
+import model.WeatherRequest;
+import repository.WeatherRepository;
+import utility.OutputWriter;
+
+public class UpdateWeatherDataInFiles {
+	//M6tle veel selle peale
+    public static final String INPUT_FILE = "C:/Users/Tanel/Documents/GitHub/automaattestimine/txtFiles/input.txt";
+    public static final String OUTPUT_PATH = "C:/Users/Tanel/Documents/GitHub/automaattestimine/txtFiles/output/";
+    
+    public void updateWeather(WeatherRepository repository){
+        try{
+            RequestFactory requestFactory = new RequestFactory();
+            WeatherRequest[] requestsList = requestFactory.getRequestListFromFile();
+            
+            for(WeatherRequest request:requestsList){       	
+            	System.out.println(request.toString());
+                CurrentWeatherReport currentWeatherReport = repository.getCurrentWeather(request);
+                System.out.println(currentWeatherReport.toString());
+                ThreeDaysWeatherReport threeDaysWeatherReport = repository.getThreeDaysWeather(request);
+                OutputWriter writer = new OutputWriter();
+                writer.writeToFile(currentWeatherReport, threeDaysWeatherReport, OUTPUT_PATH+request.cityName+".txt");
+            }
+        }catch(Exception e){
+            
+        }
+    }
+
+}

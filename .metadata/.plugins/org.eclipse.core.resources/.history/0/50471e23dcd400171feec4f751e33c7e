@@ -1,0 +1,40 @@
+package testHelpers;
+
+import org.json.JSONObject;
+
+import model.Coordinates;
+import model.CurrentWeatherReport;
+import model.OneDayMaxMinTemp;
+import model.ThreeDaysWeatherReport;
+import utility.HttpConnection;
+
+public class OWResponceDummy {
+	public final String cityName;
+
+	public OWResponceDummy() {
+	    this.cityName = "DummyCity";
+	}
+	
+	public CurrentWeatherReport createCurrentWeatherDummy(){
+	    CurrentWeatherReport currentWeatherReportDummy = new CurrentWeatherReport("DummyCity", createCoordinatesDummy(), -1);
+	    return currentWeatherReportDummy;
+	}
+	
+	public ThreeDaysWeatherReport createThreeDaysWeatherReportDummy(){
+	    OneDayMaxMinTemp dayOneMaxMin = new OneDayMaxMinTemp(2.1, -2);
+	    OneDayMaxMinTemp dayTwoMaxMin = new OneDayMaxMinTemp(2.1, -2);
+	    OneDayMaxMinTemp dayThreeMaxMin = new OneDayMaxMinTemp(2.1, -2);
+		OneDayMaxMinTemp[] threeDaysTemperatureList = new OneDayMaxMinTemp[3];
+		threeDaysTemperatureList[0] = dayOneMaxMin;
+		threeDaysTemperatureList[1] = dayTwoMaxMin;
+		threeDaysTemperatureList[2] = dayThreeMaxMin;
+		ThreeDaysWeatherReport threeDaysWeatherReportDummy = new ThreeDaysWeatherReport("DummyCity", createCoordinatesDummy(), threeDaysTemperatureList);
+		return threeDaysWeatherReportDummy;
+	}
+	
+	private Coordinates createCoordinatesDummy(){
+		Coordinates coordinates = new Coordinates(25.96, 59.26);
+		return coordinates;
+	}
+}
+

@@ -1,0 +1,116 @@
+package repository;
+
+import static org.junit.Assert.*;
+
+import java.io.IOException;
+
+import org.apache.http.ParseException;
+import org.apache.http.client.ClientProtocolException;
+import org.json.JSONException;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+import model.OneDayMaxMinTemp;
+import model.ThreeDaysWeatherReport;
+import model.WeatherRequest;
+import utility.Constants;
+//import utility.CityNameScanner;
+import utility.InputReader;
+import utility.OutputWriter;
+import utility.FileRequestFactory;
+import utility.UpdateWeatherDataInFiles;
+
+public class ThreeDaysWeatherTest {
+    private static ThreeDaysWeatherReport report;
+    private static WeatherRequest request;
+    //private static CityNameScanner scanner;
+    private static OutputWriter writer;
+
+	@Before
+	public void setUp() throws Exception {
+		try{
+			//String INPUT_FILE = Constants.INPUT_FILE;
+			
+			OpenWeatherRepository repository = new OpenWeatherRepository();
+			
+            FileRequestFactory requestFactory = new FileRequestFactory();
+            WeatherRequest[] requestsList = requestFactory.getRequestListFromFile();
+			
+			UpdateWeatherDataInFiles updater = new UpdateWeatherDataInFiles();
+			updater.updateWeather(repository, requestsList);
+            
+            //probleem selles, et alati viimasega for tsyklist jooksutab testid
+            for(WeatherRequest request:requestsList){
+            	report = repository.getThreeDaysWeather(request);
+            	ThreeDaysWeatherTest.request = request;
+            	System.out.println(report);
+            	}	
+            }catch (Exception e){
+			fail("Cause of failure: " + e.getMessage());
+		}	
+	}
+	
+	@After
+	public void tearDown() throws Exception {}
+	
+	@Test
+	public void testLatitude(){
+		assertTrue(report.coordinates.latitude >-90);
+		assertTrue(report.coordinates.latitude < 90);
+	}
+	
+	@Test
+	public void testLongitude(){
+		assertTrue(report.coordinates.longitude > -180);
+		assertTrue(report.coordinates.longitude < 180);
+	}
+	
+	@Test
+	public void testIfResponseAndRequestCityAreEqual(){
+		assertEquals(request.cityName, report.cityName);
+	}
+	
+	@Test
+	public void testIfWeatherForThreeDaysIsReturned(){
+		assertEquals(3, report.threeDaysWeatherList.length);
+	}
+	
+	@Test
+	public void TestIfHigestTemperatureIsHigherThanLowestForEachDay(){
+		OneDayMaxMinTemp[] tdw = report.threeDaysWeatherList;
+		for(OneDayMaxMinTemp t:tdw){
+			assertTrue(t.maxTemperature > t.minTemperature);
+		}	
+	}
+	
+	@Test
+	public void TestHigestTemperatures(){
+		OneDayMaxMinTemp[] tdw = report.threeDaysWeatherList;
+		for(OneDayMaxMinTemp t:tdw){
+			assertTrue(t.maxTemperature < 70);
+			assertTrue(t.maxTemperature > -100);
+		}
+	}
+	
+	@Test
+	public void TestLowestTemperatures(){
+		OneDayMaxMinTemp[] tdw = report.threeDaysWeatherList;
+		for(OneDayMaxMinTemp t:tdw){
+			assertTrue(t.minTemperature < 70);
+			assertTrue(t.minTemperature > -100);
+		}
+	}
+	
+	/**
+	@Test
+	public void testIfTheDatesAreFollowingEachother(){
+		ThreeDaysWeather[] tdw = report.threeDaysWeather;
+		for(ThreeDaysWeather t:tdw){			
+		} 
+	**/
+}
+	
+
+
+

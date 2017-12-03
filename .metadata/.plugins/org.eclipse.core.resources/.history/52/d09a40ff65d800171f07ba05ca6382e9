@@ -1,0 +1,55 @@
+package repository;
+
+import static org.junit.Assert.fail;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+import dummyFactory.ResponceDummy;
+import model.ThreeDaysWeatherReport;
+import model.WeatherRequest;
+import utility.RequestFactory;
+import utility.ThreeDaysWeatherJsonHelper;
+import utility.UpdateWeatherDataInFiles;
+
+public class ThreeDaysWeatherJsonHelperTaskTest {
+	private static JSONObject responseDummy;
+	
+	@BeforeClass
+	public static void setUp() throws Exception {
+		try{			
+			ResponceDummy rd = new ResponceDummy();
+			ThreeDaysWeatherReport threeDaysWeatherReportDummy = rd.createThreeDaysWeatherReportDummy();
+			responseDummy = threeDaysWeatherReportDummy.toJSON();
+		}catch(Exception e){
+			e.printStackTrace(s);
+		}finally{
+			
+		}
+	}
+	
+	@Test
+	public void TestIfMaxMinTempArrayIsHandeledCorrectly() throws JSONException{
+		ResponceDummy rd = new ResponceDummy();
+		ThreeDaysWeatherReport threeDaysWeatherReportDummy = rd.createThreeDaysWeatherReportDummy();
+		responseDummy = threeDaysWeatherReportDummy.toJSON();
+		
+		ThreeDaysWeatherJsonHelper helper = new ThreeDaysWeatherJsonHelper();
+		helper.getThreeDaysWeatherMaxMinTempJsonArray(threeDaysWeatherReportDummy);
+		
+	}
+	
+	
+	
+//	public class ThreeDaysWeatherJsonHelper {	
+//		
+//		public JSONArray getThreeDaysWeatherMaxMinTempJsonArray(ThreeDaysWeatherReport threeDaysWeatherReport) throws JSONException{
+//		    JSONObject threeDaysWeatherReportJsonObj = threeDaysWeatherReport.toJSON();
+//		    JSONArray threeDaysWeatherJson = threeDaysWeatherReportJsonObj.getJSONArray("threeDaysWeather");
+//		    return threeDaysWeatherJson;
+//		}
+//	}
+}

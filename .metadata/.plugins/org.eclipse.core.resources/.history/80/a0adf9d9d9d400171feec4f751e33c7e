@@ -1,0 +1,25 @@
+package repository;
+
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
+import model.CurrentWeatherReport;
+import model.ThreeDaysWeatherReport;
+import model.WeatherRequest;
+import testHelpers.OWResponceDummy;
+import utility.InputReader;
+import utility.OutputWriter;
+
+public class OutputWriterTaskTest {
+	
+	public void testWriter{
+		OutputWriter outputWriterMock = mock(OutputWriter.class);
+		
+		OWResponceDummy responceDummy = new OWResponceDummy();
+		CurrentWeatherReport currentWeatherReportDummy = responceDummy.createCurrentWeatherDummy();
+		ThreeDaysWeatherReport threeDaysWeatherReportDummy = responceDummy.createThreeDaysWeatherReportDummy();
+	            
+	    when(outputWriterMock.writeToFile(any(CurrentWeatherReport.class, ThreeDaysWeatherReport.class, String.class))).thenReturn(currentWeatherReportDummy);
+	}
+}

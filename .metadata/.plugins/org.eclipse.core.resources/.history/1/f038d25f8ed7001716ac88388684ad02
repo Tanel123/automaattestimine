@@ -1,0 +1,86 @@
+package repository;
+
+import static org.junit.Assert.*;
+
+import java.util.ArrayList;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+import model.CurrentWeatherReport;
+import model.ThreeDaysWeatherReport;
+import model.WeatherRequest;
+//import utility.CityNameScanner;
+//import utility.CityNamesListFactory;
+import utility.OutputWriter;
+import utility.RequestFactory;
+import utility.FileRequestFactory;
+import utility.UpdateWeatherDataInFiles;
+import utility.ThreeDaysWeatherJsonHelper;
+import utility.InputReader;
+
+public class CurrentWeatherTest {
+    private static CurrentWeatherReport report;
+    private static WeatherRequest request;
+    
+	@BeforeClass
+	public static void setUp() throws Exception {
+		try{			
+			OpenWeatherRepository repository = new OpenWeatherRepository();
+			RequestFactory requestFactory = new RequestFactory();
+            WeatherRequest[] requestsList = requestFactory.askUserDecisionForRequest();
+			
+			UpdateWeatherDataInFiles updater = new UpdateWeatherDataInFiles();
+			updater.updateWeather(repository, requestsList);			
+            
+            //probleem selles, et alati viimasega for tsyklist jooksutab testid
+            for(WeatherRequest request:requestsList){
+            	report = repository.getCurrentWeather(request);
+            	CurrentWeatherTest.request = request;
+            	System.out.println("gfsjfodgjdojgdsljgrourgjeoijfgosusj" + report);
+            }
+		}catch (Exception e){
+			fail("Cause of failure: " + e.getMessage());
+		}
+	}
+	
+	
+	
+	
+	@After
+	public void tearDown() throws Exception {
+	}
+	
+	@Test
+	public void testCurrentTemperature(){
+		System.out.println("Test    "+report);
+		assertTrue(report.currentTemperature < 70);
+		assertTrue(report.currentTemperature > -100);
+	}
+	
+	@Test
+	public void testIfResponseAndRequestCityAreEqual(){
+		System.out.println("Test    "+request);
+		assertEquals(request.cityName, report.cityName);
+	}
+	
+	@Test
+	public void testLatitude(){
+		System.out.println("Test    "+report);
+		assertTrue(report.coordinates.latitude >-90);
+		assertTrue(report.coordinates.latitude < 90);
+	}
+	
+	@Test
+	public void testLongitude(){
+		System.out.println("Test    "+report);
+		assertTrue(report.coordinates.longitude > -180);
+		assertTrue(report.coordinates.longitude < 180);
+	}
+	
+	
+}
+
+

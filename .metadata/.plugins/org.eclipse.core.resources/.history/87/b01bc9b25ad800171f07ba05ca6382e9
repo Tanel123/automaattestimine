@@ -1,0 +1,41 @@
+package repository;
+
+import static org.junit.Assert.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
+import org.junit.Test;
+
+import dummyFactory.RequestDummy;
+import model.WeatherRequest;
+import utility.Constants;
+import utility.FileRequestFactory;
+import utility.InputReader;
+
+public class FileRequestFactoryTaskTest {
+	
+	@Test
+	public void testsomething() throws Exception{
+		try{
+			InputReader inputReaderMock = mock(InputReader.class);
+			RequestDummy rd = new RequestDummy();
+			WeatherRequest[] requestDummy = rd.createWeatherRequestDummy();
+						
+			when(inputReaderMock.makeRequestListFromFile(any(String.class))).thenReturn(requestDummy);
+			
+			//FileRequestFactory fileRequest = new FileRequestFactory();
+			//WeatherRequest[] requests = fileRequest.createRequestsUsingInputFile();
+		    WeatherRequest[] requestsList = inputReaderMock.makeRequestListFromFile(Constants.INPUT_FILE);
+			
+            for(WeatherRequest request:requestsList && WeatherRequest requestDumm:requestDummy){
+            	System.out.println(request.toString());
+            	assertEquals(request, requestDumm);
+            }
+			//assertEquals(requests, requestDummy);
+			
+		}catch (Exception e){
+	        fail("Failure cause " + e.getMessage());
+	    }	
+	}
+}

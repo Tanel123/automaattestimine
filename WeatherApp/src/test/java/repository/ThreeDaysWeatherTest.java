@@ -2,38 +2,36 @@ package repository;
 
 import static org.junit.Assert.*;
 
-import java.io.IOException;
-
-import org.apache.http.ParseException;
-import org.apache.http.client.ClientProtocolException;
-import org.json.JSONException;
 import org.junit.After;
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import model.OneDayMaxMinTemp;
 import model.ThreeDaysWeatherReport;
 import model.WeatherRequest;
-import utility.CityNameScanner;
-import utility.OutputWriter;
+import utility.RequestFactory;
+import utility.UpdateWeatherDataInFiles;
 
 public class ThreeDaysWeatherTest {
     private static ThreeDaysWeatherReport report;
     private static WeatherRequest request;
-    private static CityNameScanner scanner;
-    private static OutputWriter writer;
 
-	@Before
-	public void setUp() throws Exception {
+	@BeforeClass
+	public static void setUp() throws Exception {
 		try{
-			scanner = new CityNameScanner();
-			writer = new OutputWriter();
-			
-			request = new WeatherRequest(scanner.getCityNameFromScanner(), "metric");
 			OpenWeatherRepository repository = new OpenWeatherRepository();
-			report = repository.getThreeDaysWeather(request);
-			writer.writeToFile(report);
-		}catch (Exception e){
+			
+			RequestFactory requestFactory = new RequestFactory();
+            WeatherRequest[] requestsList = requestFactory.askUserDecisionForRequest();
+			
+			UpdateWeatherDataInFiles updater = new UpdateWeatherDataInFiles();
+			updater.updateWeather(repository, requestsList);
+            
+            for(WeatherRequest request:requestsList){
+            	report = repository.getThreeDaysWeather(request);
+            	ThreeDaysWeatherTest.request = request;
+            	}	
+            }catch (Exception e){
 			fail("Cause of failure: " + e.getMessage());
 		}	
 	}
@@ -54,7 +52,7 @@ public class ThreeDaysWeatherTest {
 	}
 	
 	@Test
-	public void testIfResponseAndRequestCityAreEqual(){
+	public void testIfResponceAndRequestCityAreEqual(){
 		assertEquals(request.cityName, report.cityName);
 	}
 	
@@ -88,14 +86,6 @@ public class ThreeDaysWeatherTest {
 			assertTrue(t.minTemperature > -100);
 		}
 	}
-	
-	/**
-	@Test
-	public void testIfTheDatesAreFollowingEachother(){
-		ThreeDaysWeather[] tdw = report.threeDaysWeather;
-		for(ThreeDaysWeather t:tdw){			
-		} 
-	**/
 }
 	
 

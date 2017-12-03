@@ -7,7 +7,6 @@ import java.util.Date;
 
 public class UnixTimeCalculator {
 	
-	
 	public static long getStartTimeOfDayInUnix(int nrOfDaysFromCurrentDay){
 		Date dt = new Date();
 		LocalDateTime ldt = LocalDateTime.ofInstant(dt.toInstant(),ZoneId.systemDefault()).plusDays(nrOfDaysFromCurrentDay);
@@ -16,5 +15,4 @@ public class UnixTimeCalculator {
 		long timeInUnix = (out.getTime()/1000) + 10800;
 		return timeInUnix;
 	}
-
 }

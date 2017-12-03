@@ -1,0 +1,23 @@
+package repository;
+
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
+import org.junit.Test;
+
+import dummyFactory.RequestDummy;
+import model.WeatherRequest;
+import utility.InputReader;
+
+public class FileRequestFactoryTaskTest {
+	
+	@Test
+	public void testsomething(){
+		InputReader inputReaderMock = mock(InputReader.class);
+		RequestDummy dummyrequest = new RequestDummy();
+		WeatherRequest[] requestDummy = dummyrequest.createWeatherRequestDummy();
+		
+		when(inputReaderMock.makeRequestListFromFile(any(String.class))).thenReturn(requestsListDummy);
+	}
+}

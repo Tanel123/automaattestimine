@@ -1,0 +1,8 @@
+package utility;
+
+public class Constants {
+	public static final String INPUT_FILE = "C:/Users/Tanel/Documents/GitHub/automaattestimine/txtFiles/input.txt";
+    public static final String OUTPUT_PATH = "C:/Users/Tanel/Documents/GitHub/automaattestimine/txtFiles/output/";
+    public static final String UNIT = "metric";
+
+}

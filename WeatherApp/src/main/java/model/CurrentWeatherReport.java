@@ -1,5 +1,7 @@
 package model;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class CurrentWeatherReport{
 	
@@ -18,4 +20,14 @@ public class CurrentWeatherReport{
 		return "CurrentWeatherReport [cityName=" + cityName + ", coordinates=" + coordinates + ", currentTemperature="
 				+ currentTemperature + "]";
 	}
+    
+    
+	public JSONObject toJSON() throws JSONException {
+
+        JSONObject jsonObj = new JSONObject();        
+        jsonObj.put("cityName", cityName);
+        jsonObj.put("coordinates", coordinates.toJSON());
+		jsonObj.put("currentTemperature", currentTemperature);
+        return jsonObj;
+    }
 }

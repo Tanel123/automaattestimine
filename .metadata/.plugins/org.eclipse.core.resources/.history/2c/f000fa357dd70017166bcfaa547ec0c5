@@ -1,0 +1,12 @@
+package utility;
+
+import model.WeatherRequest;
+
+public class RequestFactory {
+	
+	public WeatherRequest[] getRequestListFromFile() throws Exception{
+		InputReader inputReader = new InputReader();
+	    WeatherRequest[] requestsList = inputReader.makeRequestListFromFile(Constants.INPUT_FILE);
+	    return requestsList;
+	}
+}

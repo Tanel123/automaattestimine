@@ -1,14 +1,39 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="java.util.Scanner"/>
-<fullyQualifiedTypeName name="org.junit.BeforeClass"/>
 <fullyQualifiedTypeName name="utility.CityNameScanner"/>
-<fullyQualifiedTypeName name="java.io.File"/>
 <fullyQualifiedTypeName name="java.io.OutputStreamWriter"/>
 <fullyQualifiedTypeName name="java.io.BufferedWriter"/>
 <fullyQualifiedTypeName name="java.io.FileOutputStream"/>
 <fullyQualifiedTypeName name="java.io.Writer"/>
-<fullyQualifiedTypeName name="model.CurrentWeatherReport"/>
 <fullyQualifiedTypeName name="java.io.IOException"/>
+<fullyQualifiedTypeName name="utility.CityNamesListFactory"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="testHelpers.setUpHelper"/>
+<fullyQualifiedTypeName name="model.Input"/>
+<fullyQualifiedTypeName name="repository.WeatherRepository"/>
+<fullyQualifiedTypeName name="java.io.FileWriter"/>
+<fullyQualifiedTypeName name="com.google.gson.GsonBuilder"/>
+<fullyQualifiedTypeName name="com.google.gson.JsonObject"/>
+<fullyQualifiedTypeName name="org.json.JSONObject"/>
+<fullyQualifiedTypeName name="utility.testClass"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="java.util.Arrays"/>
+<fullyQualifiedTypeName name="org.json.JSONArray"/>
+<fullyQualifiedTypeName name="model.Coordinates"/>
+<fullyQualifiedTypeName name="model.CurrentWeatherReport"/>
+<fullyQualifiedTypeName name="utility.UpdateWeatherDataInFiles"/>
+<fullyQualifiedTypeName name="java.io.File"/>
+<fullyQualifiedTypeName name="model.ThreeDaysWeatherReport"/>
+<fullyQualifiedTypeName name="testHelpers.OWResponceDummy"/>
+<fullyQualifiedTypeName name="utility.InputFileRequestFactory"/>
+<fullyQualifiedTypeName name="com.google.gson.Gson"/>
 <fullyQualifiedTypeName name="utility.OutputWriter"/>
+<fullyQualifiedTypeName name="java.util.Scanner"/>
+<fullyQualifiedTypeName name="org.junit.BeforeClass"/>
+<fullyQualifiedTypeName name="dummyFactory.RequestDummy"/>
+<fullyQualifiedTypeName name="model.WeatherRequest"/>
+<fullyQualifiedTypeName name="org.apache.http.client.HttpClient"/>
+<fullyQualifiedTypeName name="org.junit.Test"/>
+<fullyQualifiedTypeName name="dummyFactory.ResponceDummy"/>
+<fullyQualifiedTypeName name="utility.ThreeDaysWeatherJsonHelper"/>
 </qualifiedTypeNameHistroy>

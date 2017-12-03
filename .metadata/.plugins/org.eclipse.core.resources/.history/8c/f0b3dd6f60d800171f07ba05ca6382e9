@@ -1,0 +1,129 @@
+package repository;
+
+import static org.junit.Assert.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.ParseException;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.StatusLine;
+import org.apache.http.util.EntityUtils;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import utility.HttpConnection;
+
+import org.junit.Test;
+
+import model.WeatherRequest;
+
+public class HttpConnectionTest {
+	private final int HTTP_OK_CODE = 200;
+	private final String CURRENT_WEATHER_URL = "http://api.openweathermap.org/data/2.5/weather?q=Tallinn,EE&APPID=1a8a68a7512dc21390d787008026df5e&units=metric";
+	private final String THREE_DAYS_WEATHER_URL = "http://api.openweathermap.org/data/2.5/forecast?q=Tallinn,EE&APPID=1a8a68a7512dc21390d787008026df5e&units=metric";
+
+	@Test
+	public void testConnectionForCurrentWeather() {
+		try{
+			HttpResponse httpRes = HttpConnection.getHttpResponse(CURRENT_WEATHER_URL);
+			int responseCode = httpRes.getStatusLine().getStatusCode();
+			assertEquals(responseCode, HTTP_OK_CODE);
+		} catch(Exception e){
+			fail("Failed to make connection with API for current weather data");
+		}
+	}
+	
+	@Test
+	public void testConnectionForThreeDaysWeather() {
+		try{
+			HttpResponse httpRes = HttpConnection.getHttpResponse(THREE_DAYS_WEATHER_URL);
+			int responseCode = httpRes.getStatusLine().getStatusCode();
+			assertEquals(responseCode, HTTP_OK_CODE);
+		} catch(Exception e){
+			fail("Failed to make a connection with API for three days weather data");
+		}
+	}
+	//HTTP/1.1 200 OK [Server: openresty, Date: Sun, 03 Dec 2017 18:54:18 GMT, Content-Type: application/json; charset=utf-8, Content-Length: 429, Connection: keep-alive, X-Cache-Key: /data/2.5/weather?APPID=1a8a68a7512dc21390d787008026df5e&q=tallinn,ee&units=metric, Access-Control-Allow-Origin: *, Access-Control-Allow-Credentials: true, Access-Control-Allow-Methods: GET, POST] org.apache.http.conn.BasicManagedEntity@43814d18
+	
+	@Test
+	public void testIfHttpResponceWasConverterToJsonObjectCorrectly() throws ParseException, IOException, JSONException{
+		 //given:
+		HttpConnection connection = new HttpConnection();
+		HttpConnection connectionMock = mock(HttpConnection.class);
+		
+        //HttpClient httpClient = mock(HttpClient.class);
+        HttpResponse httpResponseMock = mock(HttpResponse.class);
+        StatusLine statusLine = mock(StatusLine.class);
+        //StatusLine statusLine = mock(StatusLine.class);
+
+        //and:
+        //when(statusLine.getStatusCode()).thenReturn(200);
+        //when(httpResponseMock.getStatusLine()).thenReturn(statusLine);
+        
+		//JSONArray dummyResponce = new JSONArray(threeDaysWeatherList);
+        JSONObject jsonObjResponceDummy = new JSONObject();        
+        jsonObjResponceDummy.put("dt", 12345);
+        jsonObjResponceDummy.put("coord", 22);
+        jsonObjResponceDummy.put("name", "Dummy");
+        
+        when(httpResponseMock.getStatusLine()).thenReturn(statusLine);
+        when(connectionMock.convertResponseToJsonObject(any(HttpResponse.class))).thenReturn(jsonObjResponceDummy);
+        
+        JSONObject responseJson = connectionMock.convertResponseToJsonObject(httpResponseMock);
+        
+        System.out.println(responseJson);
+        System.out.println(jsonObjResponceDummy);
+        assertEquals(responseJson, jsonObjResponceDummy);
+        //when(httpClient.execute(httpGet)).thenReturn(httpResponse);
+
+        //and:
+        //StatusApiClient client = new StatusApiClient(httpClient, httpGet);
+
+        //when:
+        //boolean status = client.getStatus();
+
+        //then:
+        //Assert.assertTrue(status);
+	}
+	
+	
+	
+	
+	/*
+	 * public class HttpConnection {
+	
+	public static HttpResponse getHttpResponse(String url) throws ClientProtocolException, IOException{
+		HttpClient httpclient = new DefaultHttpClient();
+		HttpPost httppost = new HttpPost(url);
+		
+		List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
+		nameValuePairs.add(new BasicNameValuePair("action", "getjson"));
+		
+		httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+		HttpResponse response = httpclient.execute(httppost);
+		System.out.println(response);
+		return response;
+	}
+	
+    public static JSONObject convertResponseToJsonObject(HttpResponse response) throws ParseException, IOException, JSONException{		
+		String jsonStr = EntityUtils.toString(response.getEntity());
+		JSONObject jsonObj = new JSONObject(jsonStr);
+		return jsonObj;
+     }
+}
+	 */
+
+}

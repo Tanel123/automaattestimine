@@ -1,7 +1,10 @@
 package model;
 
-import java.util.ArrayList;
 import java.util.Arrays;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ThreeDaysWeatherReport{
 	public final String cityName;
@@ -20,5 +23,16 @@ public class ThreeDaysWeatherReport{
 		return "ThreeDaysWeatherReport [cityName=" + cityName + ", coordinates=" + coordinates
 				+ ", threeDaysWeatherList=" + Arrays.toString(threeDaysWeatherList) + "]";
 	}
+	
+	public JSONObject toJSON() throws JSONException {
+
+		JSONArray oneDayMaxMinTempJsonArray = new JSONArray(threeDaysWeatherList);
+        JSONObject jsonObj = new JSONObject();        
+        jsonObj.put("cityName", cityName);
+        jsonObj.put("coordinates", coordinates.toJSON());
+		jsonObj.put("threeDaysWeather", oneDayMaxMinTempJsonArray);
+        return jsonObj;
+    }
+	
 	
 }

@@ -1,0 +1,33 @@
+package utility;
+
+public class RequestFactory {
+	private static Scanner scanner;
+	
+	public String getCityNameFromScanner() throws Exception{
+				
+		try{			
+			System.out.println("To insert city name from console insert 'C', "
+					+ "To read city name from input.txt file insert 'R'"
+					+ "To use dummy insert 'D': ");
+			scanner = new Scanner(System.in);
+			String decision = scanner.nextLine();
+			
+			if(decision.equalsIgnoreCase("C")){				
+				System.out.println("Enter city name: ");
+				String cityname = scanner.nextLine();
+				ScannerRequestFactory scannerRequest = new ScannerRequestFactory();
+				WeatherRequest[] request = scannerRequest.createRequest(cityname);
+				return request;
+		
+			}else if(decision.equalsIgnoreCase("R")){				
+				Scanner fileIn = new Scanner(new File("C:/Users/Tanel/Documents/GitHub/automaattestimine/input.txt"));
+				String cityname = fileIn.nextLine();
+				return cityname;			
+			}
+				
+		}catch(Exception e){
+			throw new Exception("Reading inserted value or reading file failed");
+		}
+		return null;
+		}
+}

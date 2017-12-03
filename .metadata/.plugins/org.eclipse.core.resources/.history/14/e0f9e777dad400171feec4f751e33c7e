@@ -1,0 +1,45 @@
+package repository;
+
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.*;
+
+import org.json.JSONException;
+import org.junit.Test;
+
+import model.CurrentWeatherReport;
+import model.ThreeDaysWeatherReport;
+import model.WeatherRequest;
+import testHelpers.OWResponceDummy;
+import utility.InputReader;
+import utility.OutputWriter;
+import utility.UpdateWeatherDataInFiles;;
+
+public class OutputWriterTaskTest {
+	
+	@Test
+	public void testWriter() throws JSONException{
+		/*
+		OutputWriter outputWriterMock = mock(OutputWriter.class);
+		
+		OWResponceDummy responceDummy = new OWResponceDummy();
+		CurrentWeatherReport currentWeatherReportDummy = responceDummy.createCurrentWeatherDummy();
+		ThreeDaysWeatherReport threeDaysWeatherReportDummy = responceDummy.createThreeDaysWeatherReportDummy();
+	            
+	    //when(outputWriterMock.writeToFile(any(CurrentWeatherReport.class, ThreeDaysWeatherReport.class, String.class)));
+	     * 	     */
+		
+		// create the mock
+		OutputWriter outputWriterMock = mock(OutputWriter.class);
+		
+		OWResponceDummy responceDummy = new OWResponceDummy();
+		CurrentWeatherReport currentWeatherReportDummy = responceDummy.createCurrentWeatherDummy();
+		ThreeDaysWeatherReport threeDaysWeatherReportDummy = responceDummy.createThreeDaysWeatherReportDummy();
+
+		// call the method under test and pass in the mock 
+
+		verify(outputWriterMock);
+		// verify the intended behaviour
+		OutputWriter.writeToFile(currentWeatherReportDummy, threeDaysWeatherReportDummy, UpdateWeatherDataInFiles.OUTPUT_PATH);
+		//verify(outputWriterMock).close();
+	}
+}

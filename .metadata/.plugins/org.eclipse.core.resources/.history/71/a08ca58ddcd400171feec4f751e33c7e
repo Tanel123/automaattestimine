@@ -1,0 +1,51 @@
+package utility;
+
+import java.io.BufferedWriter;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
+
+import org.apache.http.util.EntityUtils;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+
+import model.CurrentWeatherReport;
+import model.OneDayMaxMinTemp;
+import model.ThreeDaysWeatherReport;
+
+public class OutputWriter {
+	
+	public void writeToFile(CurrentWeatherReport currentWeatherReport, ThreeDaysWeatherReport threeDaysWeatherReport, String path) throws JSONException{	 
+	        Writer writer = null;
+
+	        try {
+	            writer = new BufferedWriter(new OutputStreamWriter(
+	                  new FileOutputStream(path, true), "utf-8"));
+	  	        
+	            JSONObject WeatherInfoJsonObj = currentWeatherReport.toJSON();
+	            
+	            ThreeDaysWeatherJsonHelper maxMinTempJsonArrayHelper = new ThreeDaysWeatherJsonHelper();
+	            
+	            WeatherInfoJsonObj.put("threeDaysWeather", maxMinTempJsonArrayHelper.getThreeDaysWeatherMaxMinTempJsonArray(threeDaysWeatherReport));
+	    		
+	    		//System.out.println(WeatherInfoJsonObj);
+	    		writer.write(WeatherInfoJsonObj.toString(4));
+	    		writer.write('\n');
+            
+	            
+	        } catch (IOException ex) {
+	        	ex.printStackTrace();
+	        	
+	        } finally {
+	           try {writer.close();} catch (Exception ex) {ex.printStackTrace();}
+	        }
+	}
+}
+

@@ -8,6 +8,7 @@ import utility.HttpConnection;
 
 import org.junit.Test;
 
+
 public class HttpConnectionTest {
 	private final int HTTP_OK_CODE = 200;
 	private final String CURRENT_WEATHER_URL = "http://api.openweathermap.org/data/2.5/weather?q=Tallinn,EE&APPID=1a8a68a7512dc21390d787008026df5e&units=metric";
@@ -34,6 +35,4 @@ public class HttpConnectionTest {
 			fail("Failed to make a connection with API for three days weather data");
 		}
 	}
-
-
 }

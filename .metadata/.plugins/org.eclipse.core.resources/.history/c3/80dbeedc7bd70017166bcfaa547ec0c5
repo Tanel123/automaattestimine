@@ -1,0 +1,31 @@
+package repository;
+
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.*;
+
+import org.json.JSONException;
+import org.junit.Test;
+
+import model.CurrentWeatherReport;
+import model.ThreeDaysWeatherReport;
+import model.WeatherRequest;
+import testHelpers.OWResponceDummy;
+import utility.InputReader;
+import utility.OutputWriter;
+import utility.UpdateWeatherDataInFiles;;
+
+public class OutputWriterTaskTest {
+	
+	@Test
+	public void testOutputWriter() throws JSONException{
+		
+		OutputWriter outputWriterMock = mock(OutputWriter.class);
+		
+		OWResponceDummy responceDummy = new OWResponceDummy();
+		CurrentWeatherReport currentWeatherReportDummy = responceDummy.createCurrentWeatherDummy();
+		ThreeDaysWeatherReport threeDaysWeatherReportDummy = responceDummy.createThreeDaysWeatherReportDummy();
+		outputWriterMock.writeToFile(currentWeatherReportDummy, threeDaysWeatherReportDummy, UpdateWeatherDataInFiles.OUTPUT_PATH+responceDummy.cityName);
+		verify(outputWriterMock).writeToFile(currentWeatherReportDummy, threeDaysWeatherReportDummy, UpdateWeatherDataInFiles.OUTPUT_PATH+responceDummy.cityName);
+		//verify(outputWriterMock).close();
+	}
+}

@@ -1,0 +1,14 @@
+[
+    {
+        "cityName":"Tapa",
+        "unit":"metric"
+    },
+    {
+        "cityName":"Paide", 
+        "unit":"metric"
+    },
+    {
+        "cityName":"Narva", 
+        "unit":"metric"
+    }
+]

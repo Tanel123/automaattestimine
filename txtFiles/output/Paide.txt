@@ -1,0 +1,22 @@
+{
+    "threeDaysWeather": [
+        {
+            "maxTemperature": 2.1,
+            "minTemperature": -1
+        },
+        {
+            "maxTemperature": 2.1,
+            "minTemperature": -2
+        },
+        {
+            "maxTemperature": 2.1,
+            "minTemperature": -3
+        }
+    ],
+    "currentTemperature": -1,
+    "cityName": "Tallinn",
+    "coordinates": {
+        "latitude": 25.96,
+        "longitude": 59.26
+    }
+}

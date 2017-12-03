@@ -46,5 +46,9 @@
 	<classpathentry kind="lib" path="C:/Users/Tanel/Documents/Ylikool/Viies semester/Automaattestimine/jarid/commons-lang3-3.6/commons-lang3-3.6-tests.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Tanel/Documents/Ylikool/Viies semester/Automaattestimine/jarid/commons-lang3-3.6/commons-lang3-3.6-test-sources.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Tanel/Documents/Ylikool/Viies semester/Automaattestimine/jarid/java-json.jar/java-json.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Tanel/Documents/Ylikool/Viies semester/Automaattestimine/jarid/mockito-core-2.12.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Tanel/Documents/Ylikool/Viies semester/Automaattestimine/jarid/byte-buddy-1.7.9.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Tanel/Documents/Ylikool/Viies semester/Automaattestimine/jarid/byte-buddy-agent-1.7.9.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Tanel/Documents/Ylikool/Viies semester/Automaattestimine/jarid/objenesis-2.6.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

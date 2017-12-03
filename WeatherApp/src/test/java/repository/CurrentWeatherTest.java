@@ -3,33 +3,36 @@ package repository;
 import static org.junit.Assert.*;
 
 import org.junit.After;
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import model.CurrentWeatherReport;
 import model.WeatherRequest;
-import utility.CityNameScanner;
-import utility.OutputWriter;
+import utility.RequestFactory;
+
+import utility.UpdateWeatherDataInFiles;
 
 public class CurrentWeatherTest {
     private static CurrentWeatherReport report;
     private static WeatherRequest request;
-    private static CityNameScanner scanner;
-    private static OutputWriter writer;
     
-	@Before
-	public void setUp() throws Exception {
-		try{
-			scanner = new CityNameScanner();
-			writer = new OutputWriter();
-			
-			request = new WeatherRequest(scanner.getCityNameFromScanner(), "metric");
+	@BeforeClass
+	public static void setUp() throws Exception {
+		try{			
 			OpenWeatherRepository repository = new OpenWeatherRepository();
-			report = repository.getCurrentWeather(request);		
-			writer.writeToFile(report);
+			RequestFactory requestFactory = new RequestFactory();
+            WeatherRequest[] requestsList = requestFactory.askUserDecisionForRequest();
+			
+			UpdateWeatherDataInFiles updater = new UpdateWeatherDataInFiles();
+			updater.updateWeather(repository, requestsList);			
+            
+            for(WeatherRequest request:requestsList){
+            	report = repository.getCurrentWeather(request);
+            	CurrentWeatherTest.request = request;
+            }
 		}catch (Exception e){
 			fail("Cause of failure: " + e.getMessage());
-		}	
+		}
 	}
 	
 	@After
@@ -58,7 +61,6 @@ public class CurrentWeatherTest {
 		assertTrue(report.coordinates.longitude > -180);
 		assertTrue(report.coordinates.longitude < 180);
 	}
-	
 	
 }
 

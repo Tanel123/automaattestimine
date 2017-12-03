@@ -1,0 +1,16 @@
+package repository;
+
+import static org.mockito.Mockito.mock;
+
+import org.junit.Test;
+
+import utility.InputReader;
+
+public class FileRequestFactoryTaskTest {
+	
+	@Test
+	public void testsomething(){
+		InputReader inputReaderMock = mock(InputReader.class);
+		
+	}
+}

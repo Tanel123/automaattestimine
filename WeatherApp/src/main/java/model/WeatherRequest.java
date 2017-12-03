@@ -10,5 +10,11 @@ public class WeatherRequest {
         this.cityName = cityName;
         this.unit = unit;
     }
+
+
+	@Override
+	public String toString() {
+		return "WeatherRequest [cityName=" + cityName + ", unit=" + unit + "]";
+	}
 	
 }

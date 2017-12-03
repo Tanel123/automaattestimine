@@ -1,0 +1,18 @@
+package utility;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+import model.WeatherRequest;
+
+
+public class ScannerRequestFactory {
+	
+	public WeatherRequest[] createRequest(String userInputCityName){
+		WeatherRequest userRequest = new WeatherRequest(userInput, Constants.UNIT);
+	    WeatherRequest[] requestsList = new WeatherRequest[1];
+	    requestsList[0] = userRequest;
+	    return requestsList;
+	}
+}

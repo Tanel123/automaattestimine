@@ -1,0 +1,66 @@
+{
+    "threeDaysWeather": [
+        {
+            "maxTemperature": 1.16,
+            "minTemperature": -1.44
+        },
+        {
+            "maxTemperature": 2.31,
+            "minTemperature": -1.63
+        },
+        {
+            "maxTemperature": 2.14,
+            "minTemperature": -1.26
+        }
+    ],
+    "currentTemperature": 2,
+    "cityName": "Tallinn",
+    "coordinates": {
+        "latitude": 24.75,
+        "longitude": 59.44
+    }
+}
+{
+    "threeDaysWeather": [
+        {
+            "maxTemperature": 1.16,
+            "minTemperature": -1.44
+        },
+        {
+            "maxTemperature": 2.31,
+            "minTemperature": -1.63
+        },
+        {
+            "maxTemperature": 2.14,
+            "minTemperature": -1.26
+        }
+    ],
+    "currentTemperature": 2,
+    "cityName": "Tallinn",
+    "coordinates": {
+        "latitude": 24.75,
+        "longitude": 59.44
+    }
+}
+{
+    "threeDaysWeather": [
+        {
+            "maxTemperature": 1.16,
+            "minTemperature": -1.44
+        },
+        {
+            "maxTemperature": 2.31,
+            "minTemperature": -1.63
+        },
+        {
+            "maxTemperature": 2.14,
+            "minTemperature": -1.26
+        }
+    ],
+    "currentTemperature": 2,
+    "cityName": "Tallinn",
+    "coordinates": {
+        "latitude": 24.75,
+        "longitude": 59.44
+    }
+}
